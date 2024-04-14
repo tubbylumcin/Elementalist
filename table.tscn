@@ -1,0 +1,707 @@
+[gd_scene load_steps=36 format=3 uid="uid://dfo2bhyteo24y"]
+
+[ext_resource type="Script" path="res://table.gd" id="1_f1tcj"]
+[ext_resource type="Texture2D" uid="uid://bxwkieupac0sa" path="res://Textures/Floor.png" id="2_6g0ew"]
+[ext_resource type="AudioStream" uid="uid://cb012c0h5lcip" path="res://Audio/Rune Crafter.wav" id="2_owg5b"]
+[ext_resource type="PackedScene" uid="uid://beqj2hpoxdnlp" path="res://platform.tscn" id="2_ss2g2"]
+[ext_resource type="AudioStream" uid="uid://cabsayk8215jw" path="res://Audio/roundStart.mp3" id="3_n14d7"]
+[ext_resource type="AudioStream" uid="uid://b2d0l25hbiddp" path="res://Audio/putdown book.mp3" id="4_1fm5l"]
+[ext_resource type="AudioStream" uid="uid://wlgkw3phmwk0" path="res://Audio/roundEnd.mp3" id="4_rk6dn"]
+[ext_resource type="Texture2D" uid="uid://b66707c57f2j" path="res://Textures/Default Spot.png" id="5_duajy"]
+[ext_resource type="AudioStream" uid="uid://cfhb675qe36di" path="res://Audio/pickup book.mp3" id="5_ip4f1"]
+[ext_resource type="Texture2D" uid="uid://tok8wubj36x7" path="res://Textures/PermaSpot.png" id="6_q8xgl"]
+[ext_resource type="Texture2D" uid="uid://tldyf36bmw6e" path="res://Textures/Health Background.png" id="7_fmg67"]
+[ext_resource type="Texture2D" uid="uid://nyhx2a00o8qy" path="res://Textures/Recipe Book.png" id="7_xi088"]
+[ext_resource type="Texture2D" uid="uid://ibmlboqdtg7b" path="res://Textures/Health.png" id="8_lb2sw"]
+[ext_resource type="Texture2D" uid="uid://dvsckc3a1n5uy" path="res://Textures/ElementalEnergy.png" id="10_mpd71"]
+[ext_resource type="Texture2D" uid="uid://c3cag8ragbi7c" path="res://Textures/Gem.png" id="11_64d7k"]
+[ext_resource type="FontFile" uid="uid://b7jrd6a2afss6" path="res://stepalange-font/StepalangeShort-p7GZd.otf" id="11_wctrb"]
+[ext_resource type="Script" path="res://Tutorial.gd" id="14_qieah"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="14_tya24"]
+[ext_resource type="FontFile" uid="uid://dbk2hdfw3sxb0" path="res://stepalange-font/Stepalange-x3BLm.otf" id="14_u5y12"]
+[ext_resource type="Script" path="res://LossScreen.gd" id="14_xssmp"]
+[ext_resource type="Texture2D" uid="uid://cwdsjii4ot1ev" path="res://Textures/ElementalBeast.png" id="15_2cv3u"]
+[ext_resource type="Texture2D" uid="uid://dw0bjous1nd5o" path="res://FloorMenu.png" id="15_er2nr"]
+[ext_resource type="Texture2D" uid="uid://dalm2hw3t2eef" path="res://Textures/Blank Rune.png" id="17_xd6mr"]
+[ext_resource type="AudioStream" uid="uid://df8j8l3vrc3cd" path="res://Audio/takeDamage.mp3" id="20_q5f3y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hrcj2"]
+font = ExtResource("11_wctrb")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_0urto"]
+font = ExtResource("11_wctrb")
+font_size = 50
+
+[sub_resource type="ImageTexture" id="ImageTexture_tnchl"]
+
+[sub_resource type="Curve2D" id="Curve2D_isx5u"]
+bake_interval = 8.77
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -36, 527, -108.373, -4.7649, 108.373, 4.7649, 254, 375, -105.946, -83.3444, 105.946, 83.3444, 587, 580, -55.4259, 10.6976, 55.4259, -10.6976, 932, 667, -39.3237, 13.168, 39.3237, -13.168, 1094, 633, -62.4379, 48.992, 62.4379, -48.992, 1278, 512, -24.4721, 8.89893, 24.4721, -8.89893, 1403, 446, 0, 0, 0, 0, 1534, 418)
+}
+point_count = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_hygmt"]
+font = ExtResource("11_wctrb")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4avr"]
+font = ExtResource("11_wctrb")
+font_size = 75
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivj4g"]
+font = ExtResource("11_wctrb")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_qi6rd"]
+font = ExtResource("14_u5y12")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4cag"]
+font = ExtResource("11_wctrb")
+font_size = 75
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhuq1"]
+font = ExtResource("14_u5y12")
+font_size = 75
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjiki"]
+font = ExtResource("14_u5y12")
+font_size = 200
+font_color = Color(0, 0, 0, 1)
+outline_size = 7
+outline_color = Color(1, 0.823529, 0.654902, 1)
+
+[node name="Table" type="Node2D"]
+script = ExtResource("1_f1tcj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_owg5b")
+volume_db = -15.0
+autoplay = true
+
+[node name="StartRound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n14d7")
+
+[node name="EndRound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rk6dn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_6g0ew")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(30, 32)
+color = Color(1, 0.301961, 0, 1)
+energy = 0.1
+blend_mode = 2
+shadow_enabled = true
+height = 1.0
+max_distance = 1000.0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 728.0
+offset_top = 25.0
+offset_right = 894.0
+offset_bottom = 191.0
+texture = ExtResource("5_duajy")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 977.0
+offset_top = 25.0
+offset_right = 1143.0
+offset_bottom = 191.0
+texture = ExtResource("5_duajy")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 600.0
+offset_top = 260.0
+offset_right = 766.0
+offset_bottom = 426.0
+texture = ExtResource("5_duajy")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 1092.0
+offset_top = 260.0
+offset_right = 1258.0
+offset_bottom = 426.0
+texture = ExtResource("5_duajy")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 845.0
+offset_top = 454.0
+offset_right = 1011.0
+offset_bottom = 620.0
+texture = ExtResource("6_q8xgl")
+expand_mode = 1
+
+[node name="PNW" parent="." groups=["platform"] instance=ExtResource("2_ss2g2")]
+position = Vector2(809, 102)
+
+[node name="PNE" parent="." groups=["platform"] instance=ExtResource("2_ss2g2")]
+position = Vector2(1058, 102)
+
+[node name="PSW" parent="." groups=["platform"] instance=ExtResource("2_ss2g2")]
+position = Vector2(681, 337)
+
+[node name="PSE" parent="." groups=["platform"] instance=ExtResource("2_ss2g2")]
+position = Vector2(1173, 337)
+
+[node name="PPerm" parent="." groups=["platform"] instance=ExtResource("2_ss2g2")]
+position = Vector2(926, 531)
+
+[node name="Not Enough Energy" type="Label" parent="."]
+visible = false
+offset_left = 828.0
+offset_top = 398.0
+offset_right = 1029.0
+offset_bottom = 454.0
+text = "NOT ENOUGH ENERGY"
+label_settings = SubResource("LabelSettings_hrcj2")
+
+[node name="CloseBookSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1725, 532)
+stream = ExtResource("4_1fm5l")
+
+[node name="OpenBookSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1725, 531)
+stream = ExtResource("5_ip4f1")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(128, 128)
+offset_left = 601.0
+offset_top = 821.0
+offset_right = 1249.0
+offset_bottom = 1079.0
+columns = 8
+
+[node name="Platform1" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(64, 64)
+
+[node name="Platform2" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(131, 194)
+
+[node name="Platform3" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(194, 64)
+
+[node name="Platform4" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(261, 194)
+
+[node name="Platform5" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(324, 64)
+
+[node name="Platform6" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(391, 194)
+
+[node name="Platform7" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(454, 64)
+
+[node name="Platform8" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(521, 194)
+
+[node name="Platform9" parent="GridContainer" instance=ExtResource("2_ss2g2")]
+position = Vector2(584, 64)
+
+[node name="StartRitual" type="Button" parent="."]
+offset_left = 427.0
+offset_top = 101.0
+offset_right = 522.0
+offset_bottom = 175.0
+flat = true
+
+[node name="Label" type="Label" parent="StartRitual"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -62.0
+offset_right = 225.0
+offset_bottom = -11.0
+text = "Begin Ritual"
+label_settings = SubResource("LabelSettings_0urto")
+
+[node name="Label" type="Label" parent="StartRitual/Label"]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 12.0
+offset_right = 1164.0
+offset_bottom = 63.0
+text = "Energy"
+label_settings = SubResource("LabelSettings_0urto")
+
+[node name="Label2" type="Label" parent="StartRitual"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 87.0
+offset_right = 232.0
+offset_bottom = 138.0
+text = "Cost:"
+label_settings = SubResource("LabelSettings_0urto")
+
+[node name="ElementalEnergy" type="TextureRect" parent="StartRitual"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 83.0
+offset_right = 121.0
+offset_bottom = 148.0
+texture = ExtResource("10_mpd71")
+
+[node name="Label" type="Label" parent="StartRitual/ElementalEnergy"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 8.0
+offset_right = 306.0
+offset_bottom = 59.0
+label_settings = SubResource("LabelSettings_0urto")
+
+[node name="TextureRect" type="TextureRect" parent="StartRitual"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 100.0
+offset_bottom = 77.0
+texture = ExtResource("11_64d7k")
+expand_mode = 1
+
+[node name="SummonOrigin" type="Node2D" parent="."]
+position = Vector2(931, 299)
+
+[node name="BookBack" type="TextureRect" parent="."]
+offset_left = 1574.0
+offset_top = 340.0
+offset_right = 1836.0
+offset_bottom = 692.0
+texture = ExtResource("7_fmg67")
+
+[node name="Healthbar" type="TextureRect" parent="."]
+offset_left = 1769.0
+offset_top = 661.0
+offset_right = 1901.0
+offset_bottom = 931.0
+rotation = 3.14159
+texture = ExtResource("8_lb2sw")
+expand_mode = 1
+
+[node name="RecipeBook" type="Sprite2D" parent="."]
+position = Vector2(1699.5, 524.507)
+scale = Vector2(1.74091, 1.74091)
+texture = ExtResource("7_xi088")
+
+[node name="OpenBook" type="Button" parent="."]
+offset_left = 1523.0
+offset_top = 265.0
+offset_right = 1878.0
+offset_bottom = 786.0
+action_mode = 0
+icon = SubResource("ImageTexture_tnchl")
+flat = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_isx5u")
+
+[node name="NextRoundInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnemyRespawn" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[node name="Shoot" type="Timer" parent="."]
+autostart = true
+
+[node name="ElementalEnergy" type="TextureRect" parent="."]
+offset_left = 1273.0
+offset_top = 95.0
+offset_right = 1357.0
+offset_bottom = 179.0
+texture = ExtResource("10_mpd71")
+
+[node name="Label" type="Label" parent="ElementalEnergy"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 17.0
+offset_right = 325.0
+offset_bottom = 68.0
+text = "10"
+label_settings = SubResource("LabelSettings_0urto")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 50.0
+offset_right = 166.0
+offset_bottom = 83.0
+text = "Next Enemies"
+label_settings = SubResource("LabelSettings_hygmt")
+
+[node name="TextureRect" type="TextureRect" parent="Label"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 36.0
+offset_right = 141.0
+offset_bottom = 91.0
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Label"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 36.0
+offset_right = 68.0
+offset_bottom = 91.0
+expand_mode = 1
+
+[node name="SummonedCreature" type="TextureRect" parent="."]
+visible = false
+offset_left = 754.0
+offset_top = 120.0
+offset_right = 1107.0
+offset_bottom = 445.0
+texture = ExtResource("15_2cv3u")
+
+[node name="PopupTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CurrentRound" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 19.0
+offset_right = 173.0
+offset_bottom = 52.0
+text = "Current Round:"
+label_settings = SubResource("LabelSettings_hygmt")
+
+[node name="Tutorial" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_qieah")
+
+[node name="NextPageButton" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1506.0
+offset_top = 802.0
+offset_right = 1859.0
+offset_bottom = 1054.0
+action_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/NextPageButton"]
+layout_mode = 0
+offset_right = 353.0
+offset_bottom = 252.0
+texture = ExtResource("17_xd6mr")
+
+[node name="Label" type="Label" parent="Tutorial/NextPageButton"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 88.0
+offset_right = 280.0
+offset_bottom = 176.0
+text = "Next"
+label_settings = SubResource("LabelSettings_b4avr")
+
+[node name="Page1" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 385.0
+offset_right = 1427.0
+offset_bottom = 458.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page1"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 996.0
+offset_bottom = 68.0
+text = "Welcome to Elementalist!
+ A tower defense game where you summon an elemental creature with different abilities."
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="Page2" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 650.0
+offset_right = 1157.0
+offset_bottom = 805.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page2"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 15.0
+offset_right = 767.0
+offset_bottom = 143.0
+text = "Drag runes into the ritual circle to perform a ritual.
+Rituals cost elemental energy, displayed to the left of the circle.
+Rune effects vanish after each round. Only runes placed in the 
+bottom (permanent) circle will have their effects last."
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="Page3" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 510.0
+offset_right = 582.0
+offset_bottom = 610.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 552.0
+offset_bottom = 141.0
+text = "Enemies come from the left. 
+Defeat enemies to obtain more elemental energy."
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="Page3-2" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 511.0
+offset_right = 1685.0
+offset_bottom = 597.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page3-2"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 10.0
+offset_right = 529.0
+offset_bottom = 138.0
+text = "Prevent enemies from reaching your tome!
+Don't let the rune be drained."
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="Page4" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 143.0
+offset_right = 576.0
+offset_bottom = 206.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page4"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 12.0
+offset_right = 558.0
+offset_bottom = 140.0
+text = "Information about Rounds is shown in the top left"
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="Page5" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1348.0
+offset_top = 179.0
+offset_right = 1845.0
+offset_bottom = 258.0
+texture = ExtResource("7_fmg67")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Tutorial/Page5"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 7.0
+offset_right = 518.0
+offset_bottom = 135.0
+text = "Use your tome to learn more about
+your runes and the different enemy types!"
+label_settings = SubResource("LabelSettings_ivj4g")
+horizontal_alignment = 1
+
+[node name="LossScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_xssmp")
+
+[node name="TextureRect" type="TextureRect" parent="LossScreen"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1079.0
+texture = ExtResource("15_er2nr")
+
+[node name="Label2" type="Label" parent="LossScreen"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 115.0
+offset_right = 1419.0
+offset_bottom = 308.0
+text = "Your Tome was Destroyed!"
+label_settings = SubResource("LabelSettings_qi6rd")
+
+[node name="Summary" type="Label" parent="LossScreen"]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 226.0
+offset_right = 1288.0
+offset_bottom = 506.0
+text = "You Survived for 5 Rounds"
+label_settings = SubResource("LabelSettings_y4cag")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="LossScreen"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 764.0
+offset_right = 873.0
+offset_bottom = 1043.0
+action_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="LossScreen/Start"]
+layout_mode = 0
+offset_right = 463.0
+offset_bottom = 280.0
+texture = ExtResource("17_xd6mr")
+
+[node name="Label" type="Label" parent="LossScreen/Start"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 104.0
+offset_right = 309.0
+offset_bottom = 201.0
+text = "Menu"
+label_settings = SubResource("LabelSettings_bhuq1")
+horizontal_alignment = 1
+
+[node name="Quit" type="Button" parent="LossScreen"]
+layout_mode = 0
+offset_left = 979.0
+offset_top = 766.0
+offset_right = 1441.0
+offset_bottom = 1045.0
+action_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="LossScreen/Quit"]
+layout_mode = 0
+offset_right = 463.0
+offset_bottom = 280.0
+texture = ExtResource("17_xd6mr")
+
+[node name="Label" type="Label" parent="LossScreen/Quit"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 104.0
+offset_right = 282.0
+offset_bottom = 201.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_bhuq1")
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_tya24")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1079.0
+texture = ExtResource("15_er2nr")
+
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 115.0
+offset_right = 1401.0
+offset_bottom = 308.0
+text = "Elementalist"
+label_settings = SubResource("LabelSettings_fjiki")
+
+[node name="Start" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 764.0
+offset_right = 873.0
+offset_bottom = 1043.0
+action_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Start"]
+layout_mode = 0
+offset_right = 463.0
+offset_bottom = 280.0
+texture = ExtResource("17_xd6mr")
+
+[node name="Label" type="Label" parent="MainMenu/Start"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 104.0
+offset_right = 309.0
+offset_bottom = 201.0
+text = "Start"
+label_settings = SubResource("LabelSettings_bhuq1")
+horizontal_alignment = 1
+
+[node name="Quit" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 979.0
+offset_top = 766.0
+offset_right = 1441.0
+offset_bottom = 1045.0
+action_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Quit"]
+layout_mode = 0
+offset_right = 463.0
+offset_bottom = 280.0
+texture = ExtResource("17_xd6mr")
+
+[node name="Label" type="Label" parent="MainMenu/Quit"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 104.0
+offset_right = 282.0
+offset_bottom = 201.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_bhuq1")
+horizontal_alignment = 1
+
+[node name="TakeDamage" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1544, 418)
+stream = ExtResource("20_q5f3y")
+
+[node name="ShootProjectile" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(931, 299)
+
+[connection signal="pressed" from="StartRitual" to="." method="_on_start_ritual_pressed"]
+[connection signal="pressed" from="OpenBook" to="." method="_on_open_book_pressed"]
+[connection signal="timeout" from="EnemyRespawn" to="." method="_on_enemy_respawn_timeout"]
+[connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]
+[connection signal="timeout" from="PopupTimer" to="." method="_on_popup_timer_timeout"]
+[connection signal="pressed" from="Tutorial/NextPageButton" to="Tutorial" method="_on_next_page_button_pressed"]
+[connection signal="pressed" from="LossScreen/Start" to="LossScreen" method="_on_start_pressed"]
+[connection signal="pressed" from="LossScreen/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/Start" to="MainMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenu/Quit" to="MainMenu" method="_on_quit_pressed"]

@@ -1,0 +1,602 @@
+[gd_scene load_steps=25 format=3 uid="uid://bdkndvnwnwieq"]
+
+[ext_resource type="Script" path="res://recipe_book.gd" id="1_icgts"]
+[ext_resource type="Texture2D" uid="uid://bncuurckq5606" path="res://Textures/Recipe Book Open.png" id="2_khggx"]
+[ext_resource type="Texture2D" uid="uid://dq4v5k7y3ww8d" path="res://Textures/Arrow.png" id="3_2avvr"]
+[ext_resource type="Texture2D" uid="uid://rsxmt0478cxu" path="res://Textures/ScoutEmblem.png" id="3_6y2st"]
+[ext_resource type="Texture2D" uid="uid://cq4cqrri0yoq8" path="res://Textures/TankEmblem.png" id="4_btw66"]
+[ext_resource type="Texture2D" uid="uid://doskbycxjv5dn" path="res://Textures/IceEmblem.png" id="5_pmq6g"]
+[ext_resource type="Texture2D" uid="uid://cp2udoadhb0tk" path="res://Textures/WaterEmblem.png" id="6_qvrsp"]
+[ext_resource type="Texture2D" uid="uid://cfsxcu7qbpkfb" path="res://Textures/FireEmblem.png" id="7_b5dtp"]
+[ext_resource type="Texture2D" uid="uid://bds5chm3wrety" path="res://Textures/MagicEmblem.png" id="8_cvcdc"]
+[ext_resource type="Texture2D" uid="uid://bven1rv3x5iki" path="res://Textures/DarkEmblem.png" id="9_xkb5x"]
+[ext_resource type="FontFile" uid="uid://dbk2hdfw3sxb0" path="res://stepalange-font/Stepalange-x3BLm.otf" id="10_qylg1"]
+[ext_resource type="FontFile" uid="uid://b7jrd6a2afss6" path="res://stepalange-font/StepalangeShort-p7GZd.otf" id="11_x0b6a"]
+[ext_resource type="Texture2D" uid="uid://bssnv1lq81a41" path="res://Textures/1th Rune Paper.png" id="12_lxdux"]
+[ext_resource type="Texture2D" uid="uid://ctlbtaisny4x0" path="res://Textures/5th Rune Paper.png" id="13_5kwko"]
+[ext_resource type="Texture2D" uid="uid://cintr6chgk6n7" path="res://Textures/8th Rune Paper.png" id="14_pe0y4"]
+[ext_resource type="Texture2D" uid="uid://cuobkiai16fc0" path="res://Textures/9th Rune Paper.png" id="15_0ojbr"]
+[ext_resource type="Texture2D" uid="uid://cxyupyfwh5rbn" path="res://Textures/6th Rune Paper.png" id="16_5o2nv"]
+[ext_resource type="Texture2D" uid="uid://cxoavmbxkoe5t" path="res://Textures/7th Rune Paper.png" id="17_vfs0v"]
+[ext_resource type="Texture2D" uid="uid://cx34e0aufssm1" path="res://Textures/2th Rune Paper.png" id="18_ksigu"]
+[ext_resource type="Texture2D" uid="uid://gainhoq2rqvq" path="res://Textures/4th Rune Paper.png" id="19_gonrm"]
+[ext_resource type="Texture2D" uid="uid://33uthmaq7hlr" path="res://Textures/3th Rune Paper.png" id="19_w22ie"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gulcw"]
+font = ExtResource("10_qylg1")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0.866667, 0.572549, 0.466667, 0.2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1l2tj"]
+font = ExtResource("11_x0b6a")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_afnxm"]
+font = ExtResource("11_x0b6a")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="RecipeBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_icgts")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_khggx")
+
+[node name="NextPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1549.0
+offset_top = 137.0
+offset_right = 1602.0
+offset_bottom = 902.0
+
+[node name="PreviousPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 137.0
+offset_right = 377.0
+offset_bottom = 902.0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1643.0
+offset_top = 309.0
+offset_right = 1882.0
+offset_bottom = 681.0
+texture = ExtResource("3_2avvr")
+expand_mode = 1
+
+[node name="CloseBook" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1635.0
+offset_top = 333.0
+offset_right = 1897.0
+offset_bottom = 686.0
+action_mode = 0
+flat = true
+
+[node name="RightPage" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1574, 513)
+
+[node name="LeftPage" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(349, 501)
+
+[node name="Page1" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 273.0
+offset_right = 455.0
+offset_bottom = 313.0
+texture = ExtResource("3_6y2st")
+
+[node name="TextureRect2" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 323.0
+offset_right = 455.0
+offset_bottom = 363.0
+texture = ExtResource("4_btw66")
+
+[node name="TextureRect3" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 393.0
+offset_right = 455.0
+offset_bottom = 433.0
+texture = ExtResource("5_pmq6g")
+
+[node name="TextureRect4" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 443.0
+offset_right = 455.0
+offset_bottom = 483.0
+texture = ExtResource("6_qvrsp")
+
+[node name="TextureRect5" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 493.0
+offset_right = 455.0
+offset_bottom = 533.0
+texture = ExtResource("7_b5dtp")
+
+[node name="TextureRect6" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 543.0
+offset_right = 455.0
+offset_bottom = 583.0
+texture = ExtResource("8_cvcdc")
+
+[node name="TextureRect7" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 593.0
+offset_right = 455.0
+offset_bottom = 633.0
+texture = ExtResource("9_xkb5x")
+
+[node name="Title" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 177.0
+offset_right = 897.0
+offset_bottom = 287.0
+text = "Beast Attributes"
+label_settings = SubResource("LabelSettings_gulcw")
+
+[node name="Title2" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 179.0
+offset_right = 1393.0
+offset_bottom = 289.0
+text = "Ice Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+
+[node name="Description" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 283.0
+offset_right = 885.0
+offset_bottom = 306.0
+text = "Creatures which move faster but are weaker than normal"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description2" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 333.0
+offset_right = 885.0
+offset_bottom = 356.0
+text = "Creatures which move slover but are stronger than normal"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description3" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 403.0
+offset_right = 894.0
+offset_bottom = 426.0
+text = "Creatures of Ice - Immune to slowness effects"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description4" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 453.0
+offset_right = 894.0
+offset_bottom = 476.0
+text = "Creatures of Water - Faster than others"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description5" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 503.0
+offset_right = 894.0
+offset_bottom = 526.0
+text = "Creatures of Fire - More painful should they succeed"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description6" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 553.0
+offset_right = 894.0
+offset_bottom = 576.0
+text = "Creatures of Magic - More resistant to damage"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Description7" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 603.0
+offset_right = 894.0
+offset_bottom = 626.0
+text = "Creatures of Darkness - Combination of Fire & Magic"
+label_settings = SubResource("LabelSettings_1l2tj")
+
+[node name="Rune" type="TextureRect" parent="Page1"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 267.0
+offset_right = 1490.0
+offset_bottom = 706.0
+texture = ExtResource("12_lxdux")
+
+[node name="RuneDescription" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 732.0
+offset_right = 1484.0
+offset_bottom = 828.0
+text = "Slow enemies on hit
+Strong against Water & Darkness
+Weak againt Fire & Magic"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="IceTotal" type="Label" parent="Page1"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 840.0
+offset_right = 1484.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Page2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title2" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 176.0
+offset_right = 1415.0
+offset_bottom = 286.0
+text = "Fire Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+
+[node name="Rune" type="TextureRect" parent="Page2"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 267.0
+offset_right = 1490.0
+offset_bottom = 706.0
+texture = ExtResource("13_5kwko")
+
+[node name="RuneDescription" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 732.0
+offset_right = 1484.0
+offset_bottom = 828.0
+text = "Deal additional damage
+Strong against Ice & Magic
+Weak againt Water & Darkness"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 177.0
+offset_right = 897.0
+offset_bottom = 287.0
+text = "Water Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune2" type="TextureRect" parent="Page2"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 442.0
+offset_top = 267.0
+offset_right = 881.0
+offset_bottom = 706.0
+texture = ExtResource("14_pe0y4")
+
+[node name="RuneDescription2" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 732.0
+offset_right = 870.0
+offset_bottom = 828.0
+text = "Slow enemies on hit
+Strong against Fire & Magic
+Weak againt Ice & Darkness"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="WaterTotal" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 840.0
+offset_right = 870.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="FireTotal" type="Label" parent="Page2"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 840.0
+offset_right = 1484.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Page3" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title2" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 178.0
+offset_right = 1489.0
+offset_bottom = 288.0
+text = "Darkness Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+
+[node name="Rune" type="TextureRect" parent="Page3"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 267.0
+offset_right = 1490.0
+offset_bottom = 706.0
+texture = ExtResource("15_0ojbr")
+
+[node name="RuneDescription" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 732.0
+offset_right = 1515.0
+offset_bottom = 828.0
+text = "Deal additional damage & slow enemies
+Strong against Water & Fire
+Weak againt Ice & Magic"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 177.0
+offset_right = 897.0
+offset_bottom = 287.0
+text = "Magic Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune2" type="TextureRect" parent="Page3"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 442.0
+offset_top = 267.0
+offset_right = 881.0
+offset_bottom = 706.0
+texture = ExtResource("16_5o2nv")
+
+[node name="RuneDescription2" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 732.0
+offset_right = 870.0
+offset_bottom = 828.0
+text = "Deal additional damage
+Strong against Ice & Darkness
+Weak againt Water & Fire"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="MagicTotal" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 840.0
+offset_right = 870.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="DarknessTotal" type="Label" parent="Page3"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 840.0
+offset_right = 1484.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Page4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title2" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 178.0
+offset_right = 1489.0
+offset_bottom = 288.0
+text = "Speed Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune" type="TextureRect" parent="Page4"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 267.0
+offset_right = 1490.0
+offset_bottom = 706.0
+texture = ExtResource("17_vfs0v")
+
+[node name="RuneDescription" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 732.0
+offset_right = 1484.0
+offset_bottom = 828.0
+text = "Increases the projectile speed of
+other runes"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 177.0
+offset_right = 897.0
+offset_bottom = 287.0
+text = "Damage Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune2" type="TextureRect" parent="Page4"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 442.0
+offset_top = 267.0
+offset_right = 881.0
+offset_bottom = 706.0
+texture = ExtResource("18_ksigu")
+
+[node name="RuneDescription2" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 732.0
+offset_right = 870.0
+offset_bottom = 828.0
+text = "Enhances the damaging capabilities
+of other runes"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="DamageTotal" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 840.0
+offset_right = 870.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="RecoveryTotal" type="Label" parent="Page4"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 840.0
+offset_right = 1484.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Page5" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title2" type="Label" parent="Page5"]
+layout_mode = 0
+offset_left = 1056.0
+offset_top = 178.0
+offset_right = 1491.0
+offset_bottom = 288.0
+text = "Vitality Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune" type="TextureRect" parent="Page5"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 267.0
+offset_right = 1490.0
+offset_bottom = 706.0
+texture = ExtResource("19_gonrm")
+
+[node name="RuneDescription" type="Label" parent="Page5"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 732.0
+offset_right = 1484.0
+offset_bottom = 828.0
+text = "Replenishes health
+Has no permanent effect"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Page5"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 177.0
+offset_right = 897.0
+offset_bottom = 287.0
+text = "Recovery Rune"
+label_settings = SubResource("LabelSettings_gulcw")
+horizontal_alignment = 1
+
+[node name="Rune2" type="TextureRect" parent="Page5"]
+modulate = Color(0.890196, 0.890196, 0.890196, 1)
+layout_mode = 0
+offset_left = 442.0
+offset_top = 267.0
+offset_right = 881.0
+offset_bottom = 706.0
+texture = ExtResource("19_w22ie")
+
+[node name="RuneDescription2" type="Label" parent="Page5"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 732.0
+offset_right = 870.0
+offset_bottom = 828.0
+text = "Increases the fire rate of other runes
+Has no temporary effect"
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[node name="SpeedTotal" type="Label" parent="Page5"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 840.0
+offset_right = 870.0
+offset_bottom = 936.0
+label_settings = SubResource("LabelSettings_afnxm")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="NextPage" to="." method="_on_next_page_pressed"]
+[connection signal="pressed" from="PreviousPage" to="." method="_on_previous_page_pressed"]
+[connection signal="pressed" from="CloseBook" to="." method="_on_close_book_pressed"]

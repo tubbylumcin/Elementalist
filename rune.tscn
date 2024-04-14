@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqplu6abakreq"]
+
+[ext_resource type="Script" path="res://Rune.gd" id="1_apd6u"]
+[ext_resource type="AudioStream" uid="uid://y3tnasavxtq8" path="res://Audio/pickup Rune.mp3" id="2_kwf0t"]
+[ext_resource type="AudioStream" uid="uid://dlaipiafcvqhm" path="res://Audio/putdown Rune.mp3" id="3_fiff2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yprif"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 134.76
+initial_velocity_max = 234.04
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 6.0
+color = Color(1, 1, 0.486275, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnsgy"]
+size = Vector2(128, 128)
+
+[node name="Rune" type="Node2D"]
+script = ExtResource("1_apd6u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_yprif")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cnsgy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_kwf0t")
+volume_db = 10.0
+
+[node name="Put down" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fiff2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

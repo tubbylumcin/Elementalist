@@ -393,6 +393,8 @@ func reset_all():
 	enemiesAlive = false
 	roundNum = 1
 	energy = 0
+	Global.energy = 50
+	Global.health = 10
 	waitTimer = false
 	attackTimerLength = 1
 	summoningEnemies = false
